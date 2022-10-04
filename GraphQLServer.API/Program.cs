@@ -1,13 +1,9 @@
-using HotChocolate.Execution.Options;
+using GraphQLServer.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddGraphQLServer()
-            .AddApolloTracing(TracingPreference.Always);
-            //.AddQueryType<Query>()
-            //.AddType<LinkedProductType>()
-            //.AddDataLoader<PriceDataLoader>()
-            //.AddType<ProductDescriptionType>();
+builder.Services.AddGraphQLServerWithTypes();
+builder.Services.AddAllServicesAsSingleton();
 
 var app = builder.Build();
 

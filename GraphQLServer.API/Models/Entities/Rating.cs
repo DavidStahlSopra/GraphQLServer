@@ -1,4 +1,4 @@
-﻿namespace GraphQLServer.Model.Entities;
+﻿namespace GraphQLServer.API.Models.Entities;
 public record struct Rating
 {
     public int Number { get; init; }

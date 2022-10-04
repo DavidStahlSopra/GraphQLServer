@@ -1,4 +1,4 @@
-﻿namespace GraphQLServer.Model.Entities;
+﻿namespace GraphQLServer.API.Models.Entities;
 public record Product
 {
     public string Id { get; init; } = string.Empty;

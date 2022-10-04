@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GraphQLServer.Model.Entities
+﻿
+namespace GraphQLServer.Model.Entities;
+public record Price
 {
-    internal class Price
-    {
-    }
+    public double Amount { get; init; }
+    public string PriceType { get; init; }
+    public bool IsSellingPrice { get; init; }
+    public DateRange DateRange { get; init; }
 }
+public record struct DateRange
+{
+    public DateTime From { get; init; }
+    public DateTime To { get; init; }
+}
+
