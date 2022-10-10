@@ -1,4 +1,6 @@
-﻿namespace GraphQLServer.API.Extensions;
+﻿using GraphQLServer.API.GraphQL.Mutations;
+
+namespace GraphQLServer.API.Extensions;
 public static class ServiceExtension
 {
     public static void AddAllServicesAsSingleton(this IServiceCollection services)
@@ -18,6 +20,7 @@ public static class ServiceExtension
     {
         services.AddGraphQLServer()
             .AddQueryType<Query>()
+            .AddMutationType<Mutation>()
             .AddType<ProductType>()
             .AddType<DateRangeType>()
             .AddType<ImageType>()

@@ -1,8 +1,16 @@
-﻿using GraphQLServer.API.Models.Entities;
-
-namespace GraphQLServer.API.Repositories.ProductService;
+﻿namespace GraphQLServer.API.Repositories.ProductService;
 public class ProductRepository : IProductRepository
 {
+    public Task<Product> AddProductAsync(Product entityProduct)
+    {
+        Random random = new Random();
+
+        int randomNumber = random.Next(1000, 9999);
+
+        entityProduct.Id = randomNumber.ToString();
+        return Task.FromResult(entityProduct);
+    }
+
     public Task<Product> GetProductByIdAsync(string id)
     {
         return Task.FromResult(new Product
