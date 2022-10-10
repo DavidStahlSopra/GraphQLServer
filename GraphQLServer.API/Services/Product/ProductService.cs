@@ -7,12 +7,20 @@ public class ProductService : IProductService
     {
         _productRepository = productRepository;
     }
-    public async Task<Models.DTOs.Product> GetProductAsync(string id)
+    public async Task<Models.DTOs.Product> GetProductByIdAsync(string id)
     {
 
         var product = await _productRepository.GetProductByIdAsync(id);
 
         return BuildDTOProduct(product);
+    }
+
+    public async Task<IEnumerable<Models.DTOs.Product>> GetAllProductsAsync()
+    {
+
+        var products = await _productRepository.GetAllProductsAsync();
+
+        return products.Select(product => BuildDTOProduct(product));
     }
 
     public async Task<Models.DTOs.Product> AddProductAsync(Models.DTOs.Product product)
@@ -35,7 +43,7 @@ public class ProductService : IProductService
                     AltText = product.Brand.Image.AltText,
                     Url = product.Brand.Image.AltText
                 } : null,
-                Name = product.Brand.Name
+                Name = string.IsNullOrEmpty( product.Brand.BrandName) ? product.Brand.Name : product.Brand.BrandName,
             } : null,
             Name = product.Name,
             Id = product.Id,
@@ -59,6 +67,7 @@ public class ProductService : IProductService
                     AltText = product.Brand.Image.AltText,
                     Url = product.Brand.Image.AltText
                 } : null,
+                BrandName = product.Brand.Name,
                 Name = product.Brand.Name
             } : null,
             Name = product.Name,

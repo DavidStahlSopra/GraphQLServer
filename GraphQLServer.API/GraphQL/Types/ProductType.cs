@@ -7,9 +7,6 @@ public class ProductType : ObjectType<Models.DTOs.Product>
     protected override void Configure(IObjectTypeDescriptor<Models.DTOs.Product> descriptor)
     {
         descriptor
-           .Field(f => f.Id)
-           .Description("Unique product id");
-        descriptor
            .Field(f => f.Name)
            .Description("Name of the product");
         descriptor

@@ -21,6 +21,8 @@ public static class ServiceExtension
         services.AddGraphQLServer()
             .AddQueryType<Query>()
             .AddMutationType<Mutation>()
+            .AddSorting()
+            .AddFiltering()
             .AddType<ProductType>()
             .AddType<DateRangeType>()
             .AddType<ImageType>()
