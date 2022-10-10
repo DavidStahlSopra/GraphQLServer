@@ -12,4 +12,6 @@ global using GraphQLServer.API.Repositories.Rating;
 global using GraphQLServer.API.Services.Inventory;
 global using GraphQLServer.API.Services.Rating;
 global using GraphQLServer.API.GraphQL.Resolvers;
+global using GraphQLServer.API.GraphQL.Mutations;
+global using GraphQLServer.API.Extensions;
 

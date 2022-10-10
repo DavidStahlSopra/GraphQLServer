@@ -34,14 +34,14 @@ public class ProductService : IProductService
 
     private Models.Entities.Product BuildEntityProduct(Models.DTOs.Product product)
     {
-        return new()
+        return product is not null ? new()
         {
             Brand = product.Brand is not null ? new()
             {
                 Image = product.Brand.Image is not null ? new()
                 {
                     AltText = product.Brand.Image.AltText,
-                    Url = product.Brand.Image.AltText
+                    Url = product.Brand.Image.Url
                 } : null,
                 Name = string.IsNullOrEmpty( product.Brand.BrandName) ? product.Brand.Name : product.Brand.BrandName,
             } : null,
@@ -53,19 +53,19 @@ public class ProductService : IProductService
                 AltText = image.AltText,
                 Url = image.Url,
             }) : Enumerable.Empty<Models.Entities.Image>()
-        };
+        } : null;
     }
 
     private Models.DTOs.Product BuildDTOProduct(Models.Entities.Product product)
     {
-        return new()
+        return product is not null ? new()
         {
             Brand = product.Brand is not null ? new()
             {
                 Image = product.Brand.Image is not null ? new()
                 {
                     AltText = product.Brand.Image.AltText,
-                    Url = product.Brand.Image.AltText
+                    Url = product.Brand.Image.Url
                 } : null,
                 BrandName = product.Brand.Name,
                 Name = product.Brand.Name
@@ -78,6 +78,6 @@ public class ProductService : IProductService
                 AltText = image.AltText,
                 Url = image.Url,
             }) : Enumerable.Empty<Models.DTOs.Image>()
-        };
+        } : null;
     }
 }
